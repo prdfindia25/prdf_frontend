@@ -12,6 +12,8 @@ This guide will help you deploy the PRDF website to Firebase Hosting.
 
 ```bash
 npm install
+
+
 ```
 
 ## Step 2: Firebase Setup
