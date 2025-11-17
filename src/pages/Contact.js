@@ -81,10 +81,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-prdf-green text-white py-20">
+      <section className="bg-prdf-primary text-white py-20">
         <div className="container-custom text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-xl text-green-100 max-w-3xl mx-auto">
+          <p className="text-xl text-white opacity-90 max-w-3xl mx-auto">
             Get in touch with us to learn more about our programs, collaborate
             on research projects, or join our community initiatives.
           </p>
@@ -92,15 +92,15 @@ const Contact = () => {
       </section>
 
       {/* Contact Information & Form */}
-      <section className="section-padding">
+      <section className="section-padding bg-prdf-bg-light">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">
+              <h2 className="text-3xl font-bold text-prdf-primary mb-8">
                 Get in Touch
               </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-prdf-text-dark mb-8 leading-relaxed">
                 We're always excited to hear from individuals and organizations
                 interested in sustainable development, research collaboration,
                 or community engagement.
@@ -109,15 +109,15 @@ const Contact = () => {
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="bg-prdf-green text-white p-3 rounded-lg">
+                    <div className="bg-prdf-cta text-white p-3 rounded-lg">
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      <h3 className="text-lg font-semibold text-prdf-primary mb-2">
                         {info.title}
                       </h3>
                       {info.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-gray-600">
+                        <p key={detailIndex} className="text-prdf-text-dark">
                           {detail}
                         </p>
                       ))}
@@ -128,13 +128,13 @@ const Contact = () => {
 
               {/* Social Media Links */}
               <div className="mt-8">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                <h3 className="text-lg font-semibold text-prdf-primary mb-4">
                   Follow Us
                 </h3>
                 <div className="flex space-x-4">
                   <a
                     href="#"
-                    className="bg-prdf-green text-white p-3 rounded-lg hover:bg-green-700 transition-colors"
+                    className="bg-prdf-cta text-white p-3 rounded-lg hover:bg-prdf-primary transition-colors"
                   >
                     <svg
                       className="w-6 h-6"
@@ -146,7 +146,7 @@ const Contact = () => {
                   </a>
                   <a
                     href="#"
-                    className="bg-prdf-blue text-white p-3 rounded-lg hover:bg-blue-600 transition-colors"
+                    className="bg-prdf-cta text-white p-3 rounded-lg hover:bg-prdf-primary transition-colors"
                   >
                     <svg
                       className="w-6 h-6"
@@ -158,7 +158,7 @@ const Contact = () => {
                   </a>
                   <a
                     href="#"
-                    className="bg-prdf-red text-white p-3 rounded-lg hover:bg-red-600 transition-colors"
+                    className="bg-prdf-cta text-white p-3 rounded-lg hover:bg-prdf-primary transition-colors"
                   >
                     <svg
                       className="w-6 h-6"
@@ -173,13 +173,13 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">
+            <div className="card p-8">
+              <h2 className="text-2xl font-bold text-prdf-primary mb-6">
                 Send us a Message
               </h2>
 
               {submitStatus === "success" && (
-                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                <div className="bg-prdf-cta bg-opacity-10 border-2 border-prdf-cta text-prdf-cta px-4 py-3 rounded mb-6">
                   Thank you for your message! We'll get back to you soon.
                 </div>
               )}
@@ -189,7 +189,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-prdf-text-dark mb-2"
                     >
                       Full Name *
                     </label>
@@ -200,14 +200,14 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-prdf-green focus:border-transparent"
+                      className="w-full px-4 py-3 border border-prdf-text-muted rounded-lg focus:ring-2 focus:ring-prdf-primary focus:border-prdf-primary bg-prdf-surface"
                       placeholder="Your full name"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-prdf-text-dark mb-2"
                     >
                       Email Address *
                     </label>
@@ -218,7 +218,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-prdf-green focus:border-transparent"
+                      className="w-full px-4 py-3 border border-prdf-text-muted rounded-lg focus:ring-2 focus:ring-prdf-primary focus:border-prdf-primary bg-prdf-surface"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -228,7 +228,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-prdf-text-dark mb-2"
                     >
                       Phone Number
                     </label>
@@ -238,14 +238,14 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-prdf-green focus:border-transparent"
+                      className="w-full px-4 py-3 border border-prdf-text-muted rounded-lg focus:ring-2 focus:ring-prdf-primary focus:border-prdf-primary bg-prdf-surface"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="subject"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-prdf-text-dark mb-2"
                     >
                       Subject *
                     </label>
@@ -255,7 +255,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-prdf-green focus:border-transparent"
+                      className="w-full px-4 py-3 border border-prdf-text-muted rounded-lg focus:ring-2 focus:ring-prdf-primary focus:border-prdf-primary bg-prdf-surface"
                     >
                       <option value="">Select a subject</option>
                       <option value="general">General Inquiry</option>
@@ -271,7 +271,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-prdf-text-dark mb-2"
                   >
                     Message *
                   </label>
@@ -282,7 +282,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-prdf-green focus:border-transparent"
+                    className="w-full px-4 py-3 border border-prdf-text-muted rounded-lg focus:ring-2 focus:ring-prdf-primary focus:border-prdf-primary bg-prdf-surface"
                     placeholder="Tell us more about your inquiry..."
                   />
                 </div>
@@ -292,8 +292,8 @@ const Contact = () => {
                   disabled={isSubmitting}
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-300 ${
                     isSubmitting
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-prdf-green hover:bg-green-700 text-white"
+                      ? "bg-prdf-text-muted cursor-not-allowed text-white"
+                      : "btn-primary"
                   }`}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
@@ -305,12 +305,12 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="bg-gray-100 py-16">
+      <section className="section-padding bg-prdf-surface">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          <h2 className="text-3xl font-bold text-center text-prdf-primary mb-8">
             Find Us
           </h2>
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="card overflow-hidden">
             <div className="aspect-video bg-gray-200 flex items-center justify-center">
               <div className="text-center">
                 <svg

@@ -11,92 +11,141 @@ import carouselImage5 from "../assets/IMG-20250813-WA0003.jpg";
 import aboutImage from "../assets/Jablpur-27_28 Aug.25.jpeg";
 
 const Home = () => {
-  // Carousel images using local assets
+  // Carousel images using local assets with ImageInfoCard format
   const carouselImages = [
     {
       src: carouselImage1,
+      image: carouselImage1,
       alt: "Research Laboratory",
-      caption: "State-of-the-art research facilities",
+      title: "Research Laboratory",
+      description:
+        "State-of-the-art research facilities dedicated to advancing sustainable development through innovative research and community engagement.",
     },
     {
       src: carouselImage2,
+      image: carouselImage2,
       alt: "Community Outreach",
-      caption: "Community engagement and development programs",
+      title: "Community Outreach",
+      description:
+        "Community engagement and development programs that empower local communities and foster sustainable growth.",
     },
     {
       src: carouselImage3,
+      image: carouselImage3,
       alt: "Sustainable Development",
-      caption: "Promoting sustainable development practices",
+      title: "Sustainable Development",
+      description:
+        "Promoting sustainable development practices that create lasting positive impact on communities and the environment.",
     },
     {
       src: carouselImage4,
+      image: carouselImage4,
       alt: "Research Projects",
-      caption: "Innovative research initiatives",
+      title: "Research Projects",
+      description:
+        "Innovative research initiatives that address pressing global challenges while fostering local community development.",
     },
     {
       src: carouselImage5,
+      image: carouselImage5,
       alt: "Community Impact",
-      caption: "Making a difference in communities",
+      title: "Community Impact",
+      description:
+        "Making a meaningful difference in communities through research, education, and sustainable development programs.",
     },
   ];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Banner */}
-      <section className="relative h-96 sm:h-[500px] lg:h-[600px] overflow-hidden">
-        <div className="absolute inset-0">
+      {/* Hero Banner - Secondary Lime background */}
+      <section className="relative h-96 sm:h-[500px]  overflow-hidden ">
+        {/* <div className="absolute inset-0">
           <img
             src={bannerImage}
             alt="PRDF Banner"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        </div>
-        <div className="relative z-10 h-full flex items-center">
-          <div className="container-custom text-center text-white">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Parameshwaram Research and Development Foundation
-            </h1>
-            <p className="text-xl sm:text-2xl mb-8 text-green-100">
-              For Sustainable Future
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary text-lg px-8 py-4">
-                Learn More
-              </button>
-              <button className="btn-secondary text-lg px-8 py-4">
-                Get Involved
-              </button>
+          <div className="absolute inset-0 bg-prdf-footer bg-opacity-40"></div>
+        </div> */}
+        <div className="relative flex items-center justify-center">
+          <div className="container-custom">
+            <div className="text-center max-w-4xl mx-auto px-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-prdf-primary">
+                Parameshwaram Research and Development Foundation
+              </h1>
+              <p className="text-lg sm:text-xl mb-8 text-prdf-text-dark">
+                Creating a just, equitable, and sustainable society through
+                community-led progress and inclusion.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button className="btn-primary text-lg px-8 py-4">
+                  Learn More
+                </button>
+                <button className="btn-secondary text-lg px-8 py-4">
+                  Get Involved
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Image Carousel */}
-      <section className="section-padding bg-gray-50">
+      {/* Image Carousel - Odd section: bg-light */}
+      <section className="section-padding bg-prdf-secondary">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+          <h2 className="text-3xl font-bold text-center text-prdf-primary mb-12">
             Our Work in Action
           </h2>
           <ImageCarousel images={carouselImages} />
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="section-padding">
+      {/* Mission & Vision Section - Even section: surface white */}
+      <section className="section-padding bg-prdf-surface">
+        <div className="container-custom">
+          <h2 className="text-3xl font-bold text-center text-prdf-primary mb-12">
+            Mission & Vision
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="card">
+              <h3 className="text-2xl font-bold text-prdf-primary mb-4">
+                Mission
+              </h3>
+              <p className="text-prdf-text-dark leading-relaxed">
+                To build pathways for marginalised communities to thrive —
+                through economic empowerment, climate resilience, and
+                affirmation of indigenous knowledge and cultural wisdom.
+              </p>
+            </div>
+            <div className="card">
+              <h3 className="text-2xl font-bold text-prdf-primary mb-4">
+                Vision
+              </h3>
+              <p className="text-prdf-text-dark leading-relaxed">
+                To contribute towards creating a just and equitable society
+                anchored in constitutional values and consciousness building,
+                where marginalised communities shape their collective progress.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section - Odd section: bg-light */}
+      <section className="section-padding bg-prdf-bg-light">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              <h2 className="text-3xl font-bold text-prdf-primary mb-6">
                 About PRDF
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-prdf-text-dark mb-6 leading-relaxed">
                 The Parameshwaram Research and Development Foundation (PRDF) is
                 a non-profit organization dedicated to advancing sustainable
                 development through innovative research, community engagement,
                 and environmental stewardship.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-prdf-text-dark mb-8 leading-relaxed">
                 Our mission is to create a sustainable future by conducting
                 cutting-edge research, implementing community-based solutions,
                 and fostering partnerships that drive positive change.
@@ -114,8 +163,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Highlights Section */}
-      <section className="section-padding bg-prdf-blue text-white">
+      {/* Highlights Section - CTA Green background */}
+      <section className="section-padding bg-prdf-cta text-white">
         <div className="container-custom">
           <h2 className="text-3xl font-bold text-center mb-12">Our Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -130,7 +179,9 @@ const Home = () => {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold mb-2">50+</h3>
-              <p className="text-green-100">Research Projects Completed</p>
+              <p className="text-white opacity-90">
+                Research Projects Completed
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-white bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
@@ -143,7 +194,7 @@ const Home = () => {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold mb-2">1000+</h3>
-              <p className="text-green-100">Community Members Reached</p>
+              <p className="text-white opacity-90">Community Members Reached</p>
             </div>
             <div className="text-center">
               <div className="bg-white bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
@@ -156,7 +207,7 @@ const Home = () => {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold mb-2">25+</h3>
-              <p className="text-green-100">Sustainable Initiatives</p>
+              <p className="text-white opacity-90">Sustainable Initiatives</p>
             </div>
           </div>
         </div>

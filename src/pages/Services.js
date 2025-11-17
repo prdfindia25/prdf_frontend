@@ -85,20 +85,20 @@ const Services = () => {
       <section className="bg-prdf-green text-white py-20">
         <div className="container-custom text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            Services & Events
+            Research and Events
           </h1>
           <p className="text-xl text-green-100 max-w-3xl mx-auto">
-            Discover our comprehensive range of services and upcoming events
+            Discover our comprehensive research programs and upcoming events
             designed to drive sustainable development.
           </p>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Research Section */}
       <section className="section-padding">
         <div className="container-custom">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            Our Services
+            Our Research Programs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
@@ -217,7 +217,7 @@ const Services = () => {
           <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
             Whether you're looking for research collaboration, community
-            programs, or consulting services, we're here to help you achieve
+            programs, or event participation, we're here to help you achieve
             your sustainable development goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

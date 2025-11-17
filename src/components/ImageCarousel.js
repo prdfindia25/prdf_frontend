@@ -1,53 +1,112 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import ImageInfoCard from "./ImageInfoCard";
 
 const ImageCarousel = ({ images, autoSlideInterval = 5000 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Start at index 1 (first real slide, after duplicate last slide)
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const intervalRef = useRef(null);
+
+  // Create infinite loop: [last, ...all, first]
+  const infiniteSlides = [
+    images[images.length - 1], // Duplicate last slide at start
+    ...images,
+    images[0], // Duplicate first slide at end
+  ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
+    // Auto-slide functionality
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = prevIndex + 1;
+        if (nextIndex >= infiniteSlides.length - 1) {
+          // If we're at the duplicate last slide, jump to real first slide
+          setTimeout(() => {
+            setIsTransitioning(false);
+            setCurrentIndex(1);
+            setTimeout(() => setIsTransitioning(true), 50);
+          }, 700);
+          return nextIndex;
+        }
+        return nextIndex;
+      });
     }, autoSlideInterval);
 
-    return () => clearInterval(interval);
-  }, [images.length, autoSlideInterval]);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [images.length, autoSlideInterval, infiniteSlides.length]);
 
   const goToSlide = (index) => {
-    setCurrentIndex(index);
+    setIsTransitioning(true);
+    setCurrentIndex(index + 1); // +1 because of duplicate at start
   };
 
   const goToPrevious = () => {
-    setCurrentIndex(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => {
+      const newIndex = prevIndex - 1;
+      if (newIndex <= 0) {
+        // If we're at the duplicate first slide, jump to real last slide
+        setTimeout(() => {
+          setIsTransitioning(false);
+          setCurrentIndex(infiniteSlides.length - 2);
+          setTimeout(() => setIsTransitioning(true), 50);
+        }, 700);
+        return 0;
+      }
+      return newIndex;
+    });
   };
 
   const goToNext = () => {
-    setCurrentIndex(currentIndex === images.length - 1 ? 0 : currentIndex + 1);
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => {
+      const newIndex = prevIndex + 1;
+      if (newIndex >= infiniteSlides.length - 1) {
+        // If we're at the duplicate last slide, jump to real first slide
+        setTimeout(() => {
+          setIsTransitioning(false);
+          setCurrentIndex(1);
+          setTimeout(() => setIsTransitioning(true), 50);
+        }, 700);
+        return newIndex;
+      }
+      return newIndex;
+    });
   };
 
+  // Get the real index for dots (0 to images.length - 1)
+  const getRealIndex = () => {
+    if (currentIndex === 0) return images.length - 1;
+    if (currentIndex === infiniteSlides.length - 1) return 0;
+    return currentIndex - 1;
+  };
+
+  const realIndex = getRealIndex();
+
   return (
-    <div className="relative w-full h-64 sm:h-80 lg:h-96 overflow-hidden rounded-lg shadow-lg">
-      {/* Images */}
-      <div className="relative w-full h-full">
-        {images.map((image, index) => (
+    <div className="relative w-full overflow-hidden">
+      {/* ImageInfoCard Display with Infinite Sliding Animation */}
+      <div
+        className="flex"
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+          transition: isTransitioning ? "transform 700ms ease-in-out" : "none",
+        }}
+      >
+        {infiniteSlides.map((image, index) => (
           <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
+            key={`${index}-${image.src || image.image}`}
+            className="w-full flex-shrink-0"
           >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover"
+            <ImageInfoCard
+              image={image.src || image.image}
+              title={image.title || image.alt}
+              description={image.description || image.caption || ""}
             />
-            {image.caption && (
-              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
-                <p className="text-sm sm:text-base font-medium">
-                  {image.caption}
-                </p>
-              </div>
-            )}
           </div>
         ))}
       </div>
@@ -55,7 +114,7 @@ const ImageCarousel = ({ images, autoSlideInterval = 5000 }) => {
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90  text-prdf-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
         aria-label="Previous image"
       >
         <svg
@@ -75,7 +134,7 @@ const ImageCarousel = ({ images, autoSlideInterval = 5000 }) => {
 
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 text-prdf-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
         aria-label="Next image"
       >
         <svg
@@ -94,15 +153,15 @@ const ImageCarousel = ({ images, autoSlideInterval = 5000 }) => {
       </button>
 
       {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? "bg-white"
-                : "bg-white bg-opacity-50 hover:bg-opacity-75"
+              index === realIndex
+                ? "bg-prdf-primary"
+                : "bg-prdf-secondary bg-opacity-70"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

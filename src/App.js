@@ -7,6 +7,8 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+// Initialize Firebase
+import "./config/firebase";
 
 function App() {
   return (

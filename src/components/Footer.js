@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-prdf-blue text-white">
+    <footer className="bg-prdf-footer">
       <div className="container-custom">
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -15,12 +15,12 @@ const Footer = () => {
                 <img src="/logo.svg" alt="PRDF Logo" className="h-12 w-12" />
                 <div>
                   <h3 className="text-xl font-bold">PRDF</h3>
-                  <p className="text-sm text-green-100">
+                  <p className="text-sm opacity-90">
                     Parameshwaram Research and Development Foundation
                   </p>
                 </div>
               </div>
-              <p className="text-green-100 text-sm leading-relaxed">
+              <p className="text-sm leading-relaxed opacity-90">
                 Dedicated to sustainable development through innovative
                 research, community engagement, and environmental stewardship.
                 Building a better future for generations to come.
@@ -34,7 +34,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/"
-                    className="text-green-100 hover:text-white transition-colors"
+                    className="opacity-90 hover:opacity-100 transition-colors"
                   >
                     Home
                   </Link>
@@ -42,7 +42,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/about"
-                    className="text-green-100 hover:text-white transition-colors"
+                    className="opacity-90 hover:opacity-100 transition-colors"
                   >
                     About Us
                   </Link>
@@ -50,15 +50,15 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/services"
-                    className="text-green-100 hover:text-white transition-colors"
+                    className="opacity-90 hover:opacity-100 transition-colors"
                   >
-                    Services
+                    Research and Events
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/gallery"
-                    className="text-green-100 hover:text-white transition-colors"
+                    className="opacity-90 hover:opacity-100 transition-colors"
                   >
                     Gallery
                   </Link>
@@ -66,7 +66,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/contact"
-                    className="text-green-100 hover:text-white transition-colors"
+                    className="opacity-90 hover:opacity-100 transition-colors"
                   >
                     Contact
                   </Link>
@@ -77,7 +77,7 @@ const Footer = () => {
             {/* Contact Info */}
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-              <div className="space-y-2 text-sm text-green-100">
+              <div className="space-y-2 text-sm opacity-90">
                 <p>
                   <span className="font-medium">Address:</span>
                   <br />
@@ -101,22 +101,22 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-green-700 py-6">
+        <div className="border-t py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-green-100 text-sm">
+            <p className="text-sm opacity-90">
               © {currentYear} Parameshwaram Research and Development Foundation.
               All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <a
                 href="#"
-                className="text-green-100 hover:text-white transition-colors"
+                className="opacity-90 hover:opacity-100 transition-colors"
               >
                 Privacy Policy
               </a>
               <a
                 href="#"
-                className="text-green-100 hover:text-white transition-colors"
+                className="opacity-90 hover:opacity-100 transition-colors"
               >
                 Terms of Service
               </a>
