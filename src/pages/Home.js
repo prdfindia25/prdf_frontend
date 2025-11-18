@@ -58,15 +58,15 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Banner - Secondary Lime background */}
-      <section className="relative h-96 sm:h-[500px]  overflow-hidden ">
-        {/* <div className="absolute inset-0">
+      <section className="relative h-96 sm:h-[500px]  overflow-hidden bg-prdf-secondary ">
+        <div className="absolute inset-0">
           <img
             src={bannerImage}
             alt="PRDF Banner"
             className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-prdf-footer bg-opacity-40"></div>
-        </div> */}
+          <div className="absolute inset-0 bg-prdf-footer bg-opacity-30"></div>
+        </div>
         <div className="relative flex items-center justify-center">
           <div className="container-custom">
             <div className="text-center max-w-4xl mx-auto px-4">
@@ -91,9 +91,9 @@ const Home = () => {
       </section>
 
       {/* Image Carousel - Odd section: bg-light */}
-      <section className="section-padding bg-prdf-secondary">
+      <section className="section-padding ">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center text-prdf-primary mb-12">
+          <h2 className=" font-bold text-center text-prdf-primary mb-12">
             Our Work in Action
           </h2>
           <ImageCarousel images={carouselImages} />
@@ -106,11 +106,9 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-center text-prdf-primary mb-12">
             Mission & Vision
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
             <div className="card">
-              <h3 className="text-2xl font-bold text-prdf-primary mb-4">
-                Mission
-              </h3>
+              <h3 className="card-title">Mission</h3>
               <p className="text-prdf-text-dark leading-relaxed">
                 To build pathways for marginalised communities to thrive —
                 through economic empowerment, climate resilience, and
@@ -118,9 +116,7 @@ const Home = () => {
               </p>
             </div>
             <div className="card">
-              <h3 className="text-2xl font-bold text-prdf-primary mb-4">
-                Vision
-              </h3>
+              <h3 className="card-title">Vision</h3>
               <p className="text-prdf-text-dark leading-relaxed">
                 To contribute towards creating a just and equitable society
                 anchored in constitutional values and consciousness building,
