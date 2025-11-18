@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/Prdf_logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,9 +18,18 @@ const Header = () => {
 
   return (
     <header>
-      <h1>
-        <Link to="/">PRDF</Link>
-      </h1>
+      <div className="header-logo-text">
+        <Link to="/" className="header-logo-link">
+          <img src={logo} alt="PRDF Logo" />
+        </Link>
+        <div className="header-text">
+          <h1>
+            <Link to="/">PRDF</Link>
+          </h1>
+
+          <h4>For sustainable future</h4>
+        </div>
+      </div>
       <nav>
         {navItems.map((item) => (
           <Link
